@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/diretorio")
+@RequestMapping("/diretorios")
 @AllArgsConstructor
 @CrossOrigin(origins = "*")
 public class DiretorioController {
@@ -22,7 +22,7 @@ public class DiretorioController {
         var diretorios = diretorioService.allDiretorios();
         return diretorios;
     }
-    @PostMapping
+    @PostMapping("/criardiretorio")
     public ResponseEntity<Object> createDiretorio(@RequestBody DiretorioDto diretorioDto){
         try{
             return ResponseEntity.ok().body(diretorioService.saveDiretorio(diretorioDto));
