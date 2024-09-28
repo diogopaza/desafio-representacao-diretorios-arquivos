@@ -16,8 +16,7 @@
     </ul>
 
 <h3>Endpoints para chamadas da API</h3>
-<h4>Criar um diretório</h4>
-    <p>Metódo POST</p>
+<h4>1- Criar um diretório - metódo POST</h4>    
     <p>http://localhost:8080/diretorio</p>  
     <p>Abaixo corpo da requisição:</p> 
 {
