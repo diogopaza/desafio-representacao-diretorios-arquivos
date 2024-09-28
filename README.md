@@ -20,7 +20,7 @@
     <p>Metódo POST
     <p>http://localhost:8080/diretorio</p>
     
-    ``` json
+    ```json
 {
     "nomeDiretorio": "Diretorio 7"
 }
