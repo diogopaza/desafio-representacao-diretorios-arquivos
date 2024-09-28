@@ -19,9 +19,10 @@
 <h6>Criar um diretório</h6>
     <p>Metódo POST
     <p>http://localhost:8080/diretorio</p>
+    
     ``` json
 {
     "nomeDiretorio": "Diretorio 7"
 }
-```
+  ```
 
