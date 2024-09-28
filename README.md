@@ -24,5 +24,13 @@
 {
     "nomeDiretorio": "Diretorio 7"
 }
+```
+<p>Abaixo exemplo de resposta da API:</p> 
+
+```json
+{
+    "nomeDiretorio": "Diretorio 7"
+}
+```
  
 
