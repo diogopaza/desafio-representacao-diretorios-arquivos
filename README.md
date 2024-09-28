@@ -20,10 +20,6 @@
     <p>http://localhost:8080/diretorio</p>  
     <p>Abaixo corpo da requisição:</p> 
     
-{
-    "nomeDiretorio": "Diretorio 7"
-}
-
 ```json
 {
     "nomeDiretorio": "Diretorio 7"
