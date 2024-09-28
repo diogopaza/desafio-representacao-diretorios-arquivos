@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { TreeNode } from 'primeng/api';
-import {NodeService} from "../service/nodeservice";
-import {Diretorio} from "../models/diretorio";
-import {DiretorioService} from "../service/diretorio.service";
-import {TreeNodeService} from "../service/tree-node.service";
+import {NodeService} from "./service/nodeservice";
+import {Diretorio} from "./models/diretorio";
+import {DiretorioService} from "./service/diretorio.service";
+import {TreeNodeService} from "./service/tree-node.service";
 
 interface Column {
   field: string;

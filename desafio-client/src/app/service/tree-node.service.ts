@@ -11,9 +11,7 @@ export class TreeNodeService {
   public toTreeNode(diretorios: Diretorio[]): TreeNode[] {
     let treeNode: TreeNode[] = [];
     diretorios.map(diretorio => {
-      console.log("nome: " + diretorio.nomeDiretorio + " id:" + diretorio.id)
       if(diretorio.id){
-        console.log("entrei if: " + diretorio.id);
         let node: TreeNode =
           {
             data: {
