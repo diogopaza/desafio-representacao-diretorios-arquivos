@@ -26,3 +26,7 @@
 }
   ```
 
+```javascript
+{ "some": "json" }
+```
+
