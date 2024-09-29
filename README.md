@@ -96,7 +96,7 @@
 }
 ```
 
-<h4>Listar todos diretórios - metódo GET</h4>
+<h3>Listar todos diretórios - metódo GET</h3>
     <p>http://localhost:8080/diretorios</p>  
     
 <p>Abaixo exemplo de resposta da API, listando todos os diretórios (também retorna arquivos e subdiretórios):</p> 
@@ -198,22 +198,46 @@
 Diretório excluído com sucesso!
 ``` 
 
-<h3>4- Atualizar um diretório - metódo PUT</h3>    
-    <p>http://localhost:8080/diretorios</p>  
+<h3>Atualizar um diretório - metódo PATCH - necessário passar o id do diretório</h3>    
+    <p>http://localhost:8080/diretorios/{id}</p>  
     <p>Abaixo corpo da requisição:</p> 
     
 ```json
-{
-    "nomeDiretorio": "Diretorio 7"
+{   
+    "nomeDiretorio": "Diretorio 5000"   
 }
 ```
 <p>Abaixo exemplo de resposta da API:</p> 
 
 ```json
-{    
-    "id": 102,
-    "nomeDiretorio": "Diretorio 8",
-    "dataCriacaoDiretorio": "28/09/2024 17:10"
+{
+    "id": 55,
+    "nomeDiretorio": "Diretorio 5000",
+    "dataCriacaoDiretorio": "28/09/2024 08:56",
+    "arquivos": [],
+    "subDiretorios": [
+        {
+            "id": 56,
+            "nomeDiretorio": "dentro do 5",
+            "dataCriacaoDiretorio": "28/09/2024 08:57",
+            "arquivos": [
+                {
+                    "id": 54,
+                    "nomeArquivo": "arquivo 5",
+                    "dataCriacaoArquivo": "28/09/2024 08:57",
+                    "diretorio": 56
+                },
+                {
+                    "id": 55,
+                    "nomeArquivo": "arquivo 55",
+                    "dataCriacaoArquivo": "28/09/2024 09:03",
+                    "diretorio": 56
+                }
+            ],
+            "subDiretorios": [],
+            "paiDiretorio": 55
+        }
+    ]
 }
 ```
 

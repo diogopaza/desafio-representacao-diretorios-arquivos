@@ -68,13 +68,13 @@ public class DiretorioService {
        return null;
     }
 
-    public Object updateDiretorio(Long id, DiretorioModel diretorioModel) {
+    public Object updateDiretorio(Long id, DiretorioDto diretorioDto) {
         try{
             var diretorio = diretorioRepository.findById(id);
             if(!diretorio.isPresent()){
                 return new Exception("Diretório não localizado!");
             }
-            BeanUtils.copyProperties(diretorioModel, diretorio);
+            diretorio.get().setNomeDiretorio(diretorioDto.nomeDiretorio());
             diretorioRepository.save(diretorio.get());
             return diretorio.get();
         }catch (Exception ex){
