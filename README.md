@@ -5,7 +5,7 @@
   <li>Java - Spring: backend</li>
   <li>MySql: banco de dados</li>
   <li>Angular: frontend</li>
-  <li></li>
+  <li>Docker: conteinerização da aplicação</li>
   <li></li>
 </ul>
 
@@ -16,7 +16,7 @@
     </ul>
 
 <h3>Endpoints para chamadas da API</h3>
-<h4>Criar um diretório - metódo POST</h4>    
+<h3>Criar um diretório - metódo POST</h3>    
     <p>http://localhost:8080/diretorios</p>  
     <p>Abaixo corpo da requisição:</p> 
     
