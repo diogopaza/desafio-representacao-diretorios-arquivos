@@ -66,6 +66,36 @@
 }
 ```
 
+<h3>Criar um arquivo - metódo POST</h3>    
+    <p>http://localhost:8080/arquivos</p>  
+    <p>Abaixo corpo da requisição:</p> 
+    
+```json
+{
+    "nomeArquivo": "arquivo.txt",
+    "diretorio": 252
+    
+}
+```
+<p>Abaixo exemplo de resposta da API:</p> 
+
+```json
+{
+    "id": 152,
+    "nomeArquivo": "arquivo.txt",
+    "dataCriacaoArquivo": "29/09/2024 09:17",
+    "diretorio": {
+        "id": 57,
+        "nomeDiretorio": "Diretorio 7",
+        "dataCriacaoDiretorio": "28/09/2024 09:03",
+        "arquivos": [
+            152
+        ],
+        "subDiretorios": []
+    }
+}
+```
+
 <h4>Listar todos diretórios - metódo GET</h4>
     <p>http://localhost:8080/diretorios</p>  
     
@@ -111,7 +141,53 @@
 
 ```
 
-<h4>3- Excluir um diretório - metódo DELETE - necessário passar o id do diretório</h4>    
+<h3>Listar todos os arquivos - metódo GET</h3>    
+    <p>http://localhost:8080/arquivos</p>  
+    <p>Abaixo corpo da requisição:</p>     
+
+<p>Abaixo exemplo de resposta da API:</p> 
+
+```json
+{
+    [
+    {
+        "id": 2,
+        "nomeArquivo": "diogo.txt",
+        "dataCriacaoArquivo": "26/09/2024 20:30"
+    },
+    {
+        "id": 54,
+        "nomeArquivo": "arquivo 5",
+        "dataCriacaoArquivo": "28/09/2024 08:57",
+        "diretorio": {
+            "id": 56,
+            "nomeDiretorio": "dentro do 5",
+            "dataCriacaoDiretorio": "28/09/2024 08:57",
+            "arquivos": [
+                54,
+                {
+                    "id": 55,
+                    "nomeArquivo": "arquivo 55",
+                    "dataCriacaoArquivo": "28/09/2024 09:03",
+                    "diretorio": 56
+                }
+            ],
+            "subDiretorios": [],
+            "paiDiretorio": {
+                "id": 55,
+                "nomeDiretorio": "Diretorio 5",
+                "dataCriacaoDiretorio": "28/09/2024 08:56",
+                "arquivos": [],
+                "subDiretorios": [
+                    56
+                ]
+            }
+        }
+    }
+    ]
+}
+
+<h3>Excluir um diretório - metódo DELETE - necessário passar o id do diretório</h3>    
     <p>http://localhost:8080/diretorios/{id}</p>  
     <p>Abaixo corpo da requisição:</p>     
 
