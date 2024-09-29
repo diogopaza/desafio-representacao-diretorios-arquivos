@@ -38,7 +38,7 @@
 <h4>2- Listar todos diretórios - metódo GET</h4>
     <p>http://localhost:8080/diretorios</p>  
     
-<p>Abaixo exemplo de resposta da API, listando todos os diretórios:</p> 
+<p>Abaixo exemplo de resposta da API, listando todos os diretórios (retorna arquivos e subdiretórios):</p> 
 
 ```json
 {    
