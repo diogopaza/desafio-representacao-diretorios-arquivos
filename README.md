@@ -35,7 +35,7 @@
 }
 ```
 
-<h4>Criar um subdiretório - metódo POST</h4>    
+<h3>Criar um subdiretório - metódo POST</h3>    
     <p>http://localhost:8080/diretorios/subdiretorios</p>  
     <p>Abaixo corpo da requisição:</p> 
     
@@ -186,6 +186,7 @@
     }
     ]
 }
+```
 
 <h3>Excluir um diretório - metódo DELETE - necessário passar o id do diretório</h3>    
     <p>http://localhost:8080/diretorios/{id}</p>  
@@ -197,7 +198,7 @@
 Diretório excluído com sucesso!
 ``` 
 
-<h4>4- Atualizar um diretório - metódo PUT</h4>    
+<h3>4- Atualizar um diretório - metódo PUT</h3>    
     <p>http://localhost:8080/diretorios</p>  
     <p>Abaixo corpo da requisição:</p> 
     
