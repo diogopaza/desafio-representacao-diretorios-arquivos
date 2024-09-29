@@ -60,10 +60,11 @@ public class DiretorioService {
         return null;
     }
 
-    public void deleteDiretorio(Long id) throws Exception {
+    public Object deleteDiretorio(Long id) throws Exception {
         diretorioRepository.findById(id).orElseThrow(() ->
                 new Exception("Diretório não localizado"));
-        diretorioRepository.deleteById(id);
+       diretorioRepository.deleteById(id);
+       return null;
     }
 
 }

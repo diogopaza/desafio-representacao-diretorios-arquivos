@@ -81,25 +81,14 @@
 ```
 
 <h3>Endpoints para chamadas da API</h3>
-<h4>3- Excluir um diretório - metódo DELETE</h4>    
-    <p>http://localhost:8080/diretorios/</p>  
-    <p>Abaixo corpo da requisição:</p> 
-    
-```json
-{
-    "nomeDiretorio": "Diretorio 7"
-}
-```
+<h4>3- Excluir um diretório - metódo DELETE - necessário passar o id do diretório</h4>    
+    <p>http://localhost:8080/diretorios/{id}</p>  
+    <p>Abaixo corpo da requisição:</p>     
+
 <p>Abaixo exemplo de resposta da API:</p> 
 
-```json
-{    
-    "id": 102,
-    "nomeDiretorio": "Diretorio 8",
-    "dataCriacaoDiretorio": "28/09/2024 17:10"
-}
 ```
-
-
+Diretório excluído com sucesso!
+```
  
 

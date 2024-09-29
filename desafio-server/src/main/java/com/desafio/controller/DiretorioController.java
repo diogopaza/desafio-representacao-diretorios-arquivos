@@ -39,8 +39,13 @@ public class DiretorioController {
         }
     }
     @DeleteMapping("/{id}")
-    public void deleteDiretorio(@PathVariable Long id) throws Exception {
+    public ResponseEntity<Object> deleteDiretorio(@PathVariable Long id) throws Exception {
+        try{
             diretorioService.deleteDiretorio(id);
+            return ResponseEntity.ok().body("Diretório excluído com sucesso!");
+        }catch (Exception ex){
+         return ResponseEntity.badRequest().body(ex.getMessage());
+        }
     }
 
 }
