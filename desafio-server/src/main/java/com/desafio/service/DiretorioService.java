@@ -4,6 +4,7 @@ import com.desafio.dto.DiretorioDto;
 import com.desafio.model.DiretorioModel;
 import com.desafio.repository.DiretorioRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,25 +19,26 @@ public class DiretorioService {
     DiretorioRepository diretorioRepository;
 
     @Transactional
-    public DiretorioModel saveDiretorio(DiretorioDto diretorioDto){
+    public DiretorioModel saveDiretorio(DiretorioDto diretorioDto) {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         var diretorio = DiretorioModel.builder()
-                        .nomeDiretorio(diretorioDto.nomeDiretorio())
-                        .dataCriacaoDiretorio(LocalDateTime.now().format(dateFormatter))
-                        .build();
+                .nomeDiretorio(diretorioDto.nomeDiretorio())
+                .dataCriacaoDiretorio(LocalDateTime.now().format(dateFormatter))
+                .build();
         return diretorioRepository.save(diretorio);
     }
-    public List<DiretorioModel> allDiretorios(){
-        try{
+
+    public List<DiretorioModel> allDiretorios() {
+        try {
             return diretorioRepository.findAll();
-        } catch (Exception ex){
+        } catch (Exception ex) {
             new Exception(ex.getMessage());
         }
         return null;
     }
 
     @Transactional
-    public DiretorioModel saveSubDiretorio(DiretorioDto diretorioDto){
+    public DiretorioModel saveSubDiretorio(DiretorioDto diretorioDto) {
 
         var diretorioPai = findDiretorioById(diretorioDto.paiDiretorio());
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
@@ -48,14 +50,20 @@ public class DiretorioService {
         return diretorioRepository.save(subDiretorio);
     }
 
-    public DiretorioModel findDiretorioById(Long id){
-        try{
+    public DiretorioModel findDiretorioById(Long id) {
+        try {
             return diretorioRepository.findById(id).orElseThrow(() ->
                     new Exception("Diretório não localizado"));
-        } catch (Exception ex){
+        } catch (Exception ex) {
             new Exception(ex.getMessage());
         }
         return null;
+    }
+
+    public void deleteDiretorio(Long id) throws Exception {
+        diretorioRepository.findById(id).orElseThrow(() ->
+                new Exception("Diretório não localizado"));
+        diretorioRepository.deleteById(id);
     }
 
 }

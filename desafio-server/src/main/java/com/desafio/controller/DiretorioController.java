@@ -22,7 +22,7 @@ public class DiretorioController {
         var diretorios = diretorioService.allDiretorios();
         return diretorios;
     }
-    @PostMapping("/criardiretorio")
+    @PostMapping
     public ResponseEntity<Object> createDiretorio(@RequestBody DiretorioDto diretorioDto){
         try{
             return ResponseEntity.ok().body(diretorioService.saveDiretorio(diretorioDto));
@@ -30,7 +30,7 @@ public class DiretorioController {
             return ResponseEntity.badRequest().body("Não foi possível criar o Diretório");
         }
     }
-    @PostMapping("/subdiretorio")
+    @PostMapping("/subdiretorios")
     public ResponseEntity<Object> createSubDiretorio(@RequestBody DiretorioDto diretorioDto){
         try{
             return ResponseEntity.ok().body(diretorioService.saveSubDiretorio(diretorioDto));
@@ -38,7 +38,9 @@ public class DiretorioController {
             return ResponseEntity.badRequest().body("Não foi possível criar o Diretório");
         }
     }
-
-
+    @DeleteMapping("/{id}")
+    public void deleteDiretorio(@PathVariable Long id) throws Exception {
+            diretorioService.deleteDiretorio(id);
+    }
 
 }
