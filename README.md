@@ -17,7 +17,7 @@
 
 <h3>Endpoints para chamadas da API</h3>
 <h4>1- Criar um diretório - metódo POST</h4>    
-    <p>http://localhost:8080/diretorios/criardiretorio</p>  
+    <p>http://localhost:8080/diretorios</p>  
     <p>Abaixo corpo da requisição:</p> 
     
 ```json
