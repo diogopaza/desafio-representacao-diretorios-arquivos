@@ -48,4 +48,13 @@ public class DiretorioController {
         }
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateDiretorio(@PathVariable Long id,
+                                                  @RequestBody DiretorioModel diretorioModel) {
+        try{
+            return ResponseEntity.ok().body(diretorioService.updateDiretorio(id, diretorioModel));
+        }catch (Exception ex){
+            return ResponseEntity.badRequest().body(ex.getMessage());
+        }
+    }
 }

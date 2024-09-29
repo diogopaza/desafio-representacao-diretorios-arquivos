@@ -4,6 +4,7 @@ import com.desafio.dto.DiretorioDto;
 import com.desafio.model.DiretorioModel;
 import com.desafio.repository.DiretorioRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -67,4 +68,17 @@ public class DiretorioService {
        return null;
     }
 
+    public Object updateDiretorio(Long id, DiretorioModel diretorioModel) {
+        try{
+            var diretorio = diretorioRepository.findById(id);
+            if(!diretorio.isPresent()){
+                return new Exception("Diretório não localizado!");
+            }
+            BeanUtils.copyProperties(diretorioModel, diretorio);
+            diretorioRepository.save(diretorio.get());
+            return diretorio.get();
+        }catch (Exception ex){
+            return new Exception("Erro ao atualizar diretório");
+        }
+    }
 }

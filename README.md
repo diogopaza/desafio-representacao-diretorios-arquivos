@@ -16,7 +16,7 @@
     </ul>
 
 <h3>Endpoints para chamadas da API</h3>
-<h4>1- Criar um diretório - metódo POST</h4>    
+<h4>Criar um diretório - metódo POST</h4>    
     <p>http://localhost:8080/diretorios</p>  
     <p>Abaixo corpo da requisição:</p> 
     
@@ -35,7 +35,38 @@
 }
 ```
 
-<h4>2- Listar todos diretórios - metódo GET</h4>
+<h4>Criar um subdiretório - metódo POST</h4>    
+    <p>http://localhost:8080/diretorios/subdiretorios</p>  
+    <p>Abaixo corpo da requisição:</p> 
+    
+```json
+{
+    "nomeDiretorio": "888555",
+    "paiDiretorio":  102
+}
+```
+<p>Abaixo exemplo de resposta da API:</p> 
+
+```json
+{    
+    {
+    "id": 252,
+    "nomeDiretorio": "888555",
+    "dataCriacaoDiretorio": "29/09/2024 11:48",
+    "paiDiretorio": {
+        "id": 102,
+        "nomeDiretorio": "Diretorio 8",
+        "dataCriacaoDiretorio": "28/09/2024 17:10",
+        "arquivos": [],
+        "subDiretorios": [
+            252
+        ]
+    }
+}
+}
+```
+
+<h4>Listar todos diretórios - metódo GET</h4>
     <p>http://localhost:8080/diretorios</p>  
     
 <p>Abaixo exemplo de resposta da API, listando todos os diretórios (também retorna arquivos e subdiretórios):</p> 
@@ -91,4 +122,23 @@
 Diretório excluído com sucesso!
 ```
  
+<h3>Endpoints para chamadas da API</h3>
+<h4>4- Atualizar um diretório - metódo PUT</h4>    
+    <p>http://localhost:8080/diretorios</p>  
+    <p>Abaixo corpo da requisição:</p> 
+    
+```json
+{
+    "nomeDiretorio": "Diretorio 7"
+}
+```
+<p>Abaixo exemplo de resposta da API:</p> 
+
+```json
+{    
+    "id": 102,
+    "nomeDiretorio": "Diretorio 8",
+    "dataCriacaoDiretorio": "28/09/2024 17:10"
+}
+```
 
