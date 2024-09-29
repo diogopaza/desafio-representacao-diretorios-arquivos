@@ -111,7 +111,6 @@
 
 ```
 
-<h3>Endpoints para chamadas da API</h3>
 <h4>3- Excluir um diretório - metódo DELETE - necessário passar o id do diretório</h4>    
     <p>http://localhost:8080/diretorios/{id}</p>  
     <p>Abaixo corpo da requisição:</p>     
@@ -120,9 +119,8 @@
 
 ```
 Diretório excluído com sucesso!
-```
- 
-<h3>Endpoints para chamadas da API</h3>
+``` 
+
 <h4>4- Atualizar um diretório - metódo PUT</h4>    
     <p>http://localhost:8080/diretorios</p>  
     <p>Abaixo corpo da requisição:</p> 
