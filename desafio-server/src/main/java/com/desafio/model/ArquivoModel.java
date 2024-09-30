@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class ArquivoModel {
 
     @Id
@@ -26,6 +25,8 @@ public class ArquivoModel {
 
     @Column(nullable = false)
     private String dataCriacaoArquivo;
+
+    @JsonBackReference
 
     @ManyToOne
     @JoinColumn(name = "diretorio_id", nullable = true)

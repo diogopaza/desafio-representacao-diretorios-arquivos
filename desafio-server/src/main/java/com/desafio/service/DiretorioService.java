@@ -4,11 +4,8 @@ import com.desafio.dto.DiretorioDto;
 import com.desafio.model.DiretorioModel;
 import com.desafio.repository.DiretorioRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.BeanUtils;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -39,7 +36,7 @@ public class DiretorioService {
     }
 
     @Transactional
-    public DiretorioModel saveSubDiretorio(DiretorioDto diretorioDto) {
+    public DiretorioModel saveSubDiretorio(DiretorioDto diretorioDto) throws Exception {
 
         var diretorioPai = findDiretorioById(diretorioDto.paiDiretorio());
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
@@ -51,14 +48,9 @@ public class DiretorioService {
         return diretorioRepository.save(subDiretorio);
     }
 
-    public DiretorioModel findDiretorioById(Long id) {
-        try {
+    public DiretorioModel findDiretorioById(Long id) throws Exception {
             return diretorioRepository.findById(id).orElseThrow(() ->
                     new Exception("Diretório não localizado"));
-        } catch (Exception ex) {
-            new Exception(ex.getMessage());
-        }
-        return null;
     }
 
     public Object deleteDiretorio(Long id) throws Exception {
@@ -74,7 +66,13 @@ public class DiretorioService {
             if(!diretorio.isPresent()){
                 return new Exception("Diretório não localizado!");
             }
-            diretorio.get().setNomeDiretorio(diretorioDto.nomeDiretorio());
+            if(diretorioDto.paiDiretorio() != null){
+                var novoDiretorio = findDiretorioById(diretorioDto.paiDiretorio());
+                diretorio.get().setPaiDiretorio(novoDiretorio);
+            }
+            if(diretorioDto.nomeDiretorio() != null){
+                diretorio.get().setNomeDiretorio(diretorioDto.nomeDiretorio());
+            }
             diretorioRepository.save(diretorio.get());
             return diretorio.get();
         }catch (Exception ex){

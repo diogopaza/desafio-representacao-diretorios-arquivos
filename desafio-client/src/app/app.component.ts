@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { TreeNode } from 'primeng/api';
-import {NodeService} from "./service/nodeservice";
 import {Diretorio} from "./models/diretorio";
 import {DiretorioService} from "./service/diretorio.service";
 import {TreeNodeService} from "./service/tree-node.service";
+import {ArquivoService} from "./service/arquivo.service";
 
 interface Column {
   field: string;
@@ -16,26 +16,28 @@ interface Column {
 })
 export class AppComponent {
 
-  constructor(private nodeService: NodeService,
-              private diretorioService: DiretorioService,
+  constructor(private diretorioService: DiretorioService,
+              private arquivoService: ArquivoService,
               private treeNodeService: TreeNodeService) {}
-  files!: TreeNode[];
+  files: TreeNode[] = [];
   cols!: Column[];
   title = 'desafio-client';
 
   ngOnInit() {
     this.cols = [
       { field: 'nome', header: 'Diretorio'},
-      { field: 'dataCriacaoDiretorio', header: 'Data criação' },
-      { field: '', header: 'Ações' },
+      { field: 'dataCriacaoDiretorio', header: 'Data criação' }
     ];
-    this.getAllDiretorios();
+    this.getAllDiretoriosAndArquivos();
   }
 
-  getAllDiretorios() {
+  getAllDiretoriosAndArquivos() {
     this.diretorioService.getDiretorios().subscribe(diretorios => {
-      this.files = this.treeNodeService.toTreeNode(diretorios);
-      console.log(diretorios);
-    })
+      this.files = this.treeNodeService.diretoriosToTreeNode(diretorios);
+      this.arquivoService.getArquivosNaRaiz().subscribe(arquivos => {
+        this.files = this.files.concat(this.treeNodeService.arquivosToTreeNode(arquivos));
+        console.log(this.files);
+      });
+    });
   }
 }

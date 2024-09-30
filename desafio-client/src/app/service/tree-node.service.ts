@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Diretorio} from "../models/diretorio";
 import {TreeNode} from "primeng/api";
+import {Arquivo} from "../models/arquivo";
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import {TreeNode} from "primeng/api";
 export class TreeNodeService {
   constructor() { }
 
-  public toTreeNode(diretorios: Diretorio[]): TreeNode[] {
+  public diretoriosToTreeNode(diretorios: Diretorio[]): TreeNode[] {
     let treeNode: TreeNode[] = [];
     diretorios.map(diretorio => {
       if(diretorio.id){
@@ -25,19 +26,37 @@ export class TreeNodeService {
             node.children?.push({
               data: {
                 nome: arquivo.nomeArquivo,
-                dataCriacaoDiretorio: arquivo.dataCriacao
+                dataCriacaoDiretorio: arquivo.dataCriacaoArquivo
               }
             })
           });
         }
         if(diretorio.subDiretorios) {
-          node.children = node.children!.concat(this.toTreeNode(diretorio.subDiretorios));
+          node.children = node.children!.concat(this.diretoriosToTreeNode(diretorio.subDiretorios));
         }
+
         treeNode.push(node);
       }
     });
     return treeNode;
   }
 
+  public arquivosToTreeNode(arquivos: Arquivo[]): TreeNode[] {
+    let treeNode: TreeNode[] = [];
+    arquivos.map(arquivo => {
+      let node: TreeNode =
+        {
+          data: {
+            nome: arquivo.nomeArquivo,
+            dataCriacaoDiretorio: arquivo.dataCriacaoArquivo
+          },
+          children: []
+        };
+      treeNode.push(node);
+    });
+    return  treeNode;
+  }
 
-}
+
+
+  }

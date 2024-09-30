@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {Diretorio} from "../models/diretorio";
+import {Arquivo} from "../models/arquivo";
 
 @Injectable({
   providedIn: 'root'
@@ -14,4 +15,5 @@ export class DiretorioService {
     const url = this.apiUrl + 'diretorios';
     return this.http.get<Diretorio[]>(url);
   }
+
 }

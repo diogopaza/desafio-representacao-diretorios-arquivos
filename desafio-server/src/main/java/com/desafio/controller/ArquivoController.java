@@ -20,7 +20,7 @@ public class ArquivoController {
     private final ArquivoService arquivoService;
 
     @GetMapping
-    public List<ArquivoModel> allArquivos(){
+    public List<ArquivoModel> allArquivos() throws Exception{
         var arquivos = arquivoService.allArquivos();
         return arquivos;
     }
@@ -30,6 +30,32 @@ public class ArquivoController {
             return ResponseEntity.ok().body(arquivoService.saveArquivo(arquivoDto));
         } catch (Exception ex) {
             return ResponseEntity.badRequest().body("Não foi possível criar o arquivo");
+        }
+    }
+
+    @GetMapping("/todosarquivosnaraiz")
+    public List<ArquivoModel> allArquivosNaRaiz() throws Exception{
+        var arquivos = arquivoService.allArquivosNaRaiz();
+        return arquivos;
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteArquivo(@PathVariable Long id) throws Exception {
+        try{
+            arquivoService.deleteArquivo(id);
+            return ResponseEntity.ok().body("Arquivo excluído com sucesso!");
+        }catch (Exception ex){
+            return ResponseEntity.badRequest().body(ex.getMessage());
+        }
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Object> updateArquivo(@PathVariable Long id,
+                                                  @RequestBody ArquivoDto arquivoDto) throws Exception{
+        try{
+            return ResponseEntity.ok().body(arquivoService.updateArquivo(id, arquivoDto));
+        }catch (Exception ex){
+            return ResponseEntity.badRequest().body(ex.getMessage());
         }
     }
 

@@ -26,6 +26,7 @@ public class DiretorioModel {
 
     @Column(nullable = false)
     private String dataCriacaoDiretorio;
+
     @OneToMany(mappedBy = "diretorio", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ArquivoModel> arquivos;
 

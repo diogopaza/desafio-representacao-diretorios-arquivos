@@ -13,16 +13,12 @@
         <td *ngFor="let col of columns; let i = index; let last = last">
           <p-treeTableToggler [rowNode]="rowNode" *ngIf="i === 0" />
           {{ rowData[col.field] }}
-          <ng-container *ngIf="last">
-            <p-button icon="pi pi-search" rounded="true" [style]="{ 'margin-right': '.5em' }" />
-            <p-button icon="pi pi-pencil" rounded="true" severity="success" />
-          </ng-container>
         </td>
       </tr>
     </ng-template>
     <ng-template pTemplate="summary">
       <div style="text-align:left">
-        <p-button icon="pi pi-refresh" label="Atualizar" severity="warning" (onClick)="getAllDiretorios()"/>
+        <p-button icon="pi pi-refresh" label="Atualizar" severity="warning" (onClick)="getAllDiretoriosAndArquivos()"/>
       </div>
     </ng-template>
   </p-treeTable>
