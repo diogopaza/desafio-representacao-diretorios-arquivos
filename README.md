@@ -40,7 +40,7 @@
 ```
 
 <h3>Criar um subdiretório - metódo POST</h3> 
-    <p>Importante destacar que um subdiretório é um diretório que referencia a um diretório pai, ou seja está dentro da lista de subdiretórios de um diretório. Processos como editar ou excluir um subdiretório são os mesmos de um diretório.</p>   
+    <p>Importante destacar que um subdiretório é um diretório que referencia a um diretório pai, ou seja está dentro da lista de subdiretórios de um diretório. Processos como editar ou excluir um subdiretório são os mesmos de um diretório. É obrigatório enviar o id do diretório pai.</p>   
     <p>http://localhost:8080/diretorios/subdiretorios</p>  
     <p>Abaixo corpo da requisição:</p> 
     
