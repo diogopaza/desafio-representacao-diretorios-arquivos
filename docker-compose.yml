@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  mysql-db:
+    image: mysql:8.0       
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: 990799    
+      MYSQL_DATABASE: banco-desafio                  
+    networks:
+      - app-network                      
+    volumes:
+      - mysql-desafio-data:/var/lib/mysql
+
+  spring-app:
+    image: diogopaza/spring-app:5.0  
+    container_name: spring-app    
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql-db
+    networks:
+      - app-network
+
+  angular-app:
+    image: diogopaza/angular-app:4.0
+    container_name: angular-app
+    ports:
+      - "4200:4200"    
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql-desafio-data:

@@ -1,23 +1,39 @@
 # desafio-representacao-diretorios-arquivos
 
-<h3>Tecnologias utilizadas:</h3>
+<h3>Tecnologias/Ferramentas utilizadas:</h3>
 <ul>
-  <li>Java - Spring: backend</li>
+  <li>Java (versao 21)- Spring: backend</li>
   <li>MySql: banco de dados</li>
-  <li>Angular: frontend</li>
+  <li>Angular (versão 15): frontend</li>
   <li>Docker: conteinerização da aplicação</li>
-  <li></li>
+  <li>Docker Compose: múltiplos containers</li>
+  <li>Postman: requisições HTTP</li>
 </ul>
 
 <h3>Organização do projeto:</h3>
     <ul>
-        <li>Front end é o projeto desafio-client</li>
-        <li>Back end é o projeto desafio-server</li>
+        <li>Frontend é o projeto desafio-client</li>
+        <li>Backend é o projeto desafio-server</li>
     </ul>
 <h3>
-    Instruções básicas:
-    
+    Instruções básicas:    
 </h3>
+<h6>Executar o projeto:</h6>
+<p><strong>docker-compose up --build<strong></p>
+<p>O arquivo docker-compose disponível na raíz do projeto do github define toda estrutura do projeto. Baixa a imagem docker do projeto backend e frontend e também roda um container mysql.</p>
+
+<ul>
+    <li>Java: 8080 porta local e 8080 no container</li>
+    <li>Angular: 4200 porta local e 4200 no container</li>
+    <li>Mysql: 3306 no container não expõe no localhost</li>
+</ul>
+<p>Importante essas portas estarem disponíveis na máquina em que o projeto irá ser executado.</p>
+
+<h3>Postman</h3>
+<a href='https://drive.google.com/file/d/1D-FDyJoQS-3bLEItnhJd9gJOs3ooxYVM/view?usp=sharing>link para baixar a colletion do Postman.</a>
+
+<h3>Testes</h3>
+<p>Foram criados unitários básicos para o DiretorioModel e ArquivoModel, estando nas classes DiretorioModelTest e ArquivoModelTest.</p>
 
 <h3>Endpoints para chamadas da API</h3>
 <h3>Criar um diretório - metódo POST</h3>    

@@ -62,7 +62,7 @@ public class ArquivoService {
         try{
             var arquivo = arquivoRepository.findById(id);
             if(!arquivo.isPresent()){
-                return new Exception("Arquivo não localizado!");
+                throw new Exception("Arquivo não localizado!");
             }
             if(arquivoDto.diretorio() != null){
                 var novoDiretorio = diretorioService.findDiretorioById(arquivoDto.diretorio());

@@ -60,11 +60,11 @@ public class DiretorioService {
        return null;
     }
 
-    public Object updateDiretorio(Long id, DiretorioDto diretorioDto) {
+    public Object updateDiretorio(Long id, DiretorioDto diretorioDto) throws Exception{
         try{
             var diretorio = diretorioRepository.findById(id);
             if(!diretorio.isPresent()){
-                return new Exception("Diretório não localizado!");
+                throw new Exception("Diretório não localizado!");
             }
             if(diretorioDto.paiDiretorio() != null){
                 var novoDiretorio = findDiretorioById(diretorioDto.paiDiretorio());
@@ -76,7 +76,7 @@ public class DiretorioService {
             diretorioRepository.save(diretorio.get());
             return diretorio.get();
         }catch (Exception ex){
-            return new Exception("Erro ao atualizar diretório");
+            throw new Exception("Erro ao atualizar diretório");
         }
     }
 }
