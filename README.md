@@ -21,6 +21,7 @@
 <h6>Executar o projeto:</h6>
 <p><strong>docker-compose up --build<strong></p>
 <p>O arquivo docker-compose disponível na raíz do projeto do github define toda estrutura do projeto. Baixa a imagem docker do projeto backend e frontend e também roda um container mysql.</p>
+<p>Por ser um projeto de teste as variáveis de senha já estão setadas no <emph>docker-compose.yml</emph>, mas o ideal seria que fossem setadas no build ou em um arquivo separado.</p>
 
 <ul>
     <li>Java: 8080 porta local e 8080 no container</li>
