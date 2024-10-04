@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   mysql-db:
     image: mysql:8.0       
@@ -20,6 +19,8 @@ services:
       - mysql-db
     networks:
       - app-network
+    restart: unless-stopped
+    command: ["sh", "-c", "sleep 30 && java -jar /app.jar"]
 
   angular-app:
     image: diogopaza/angular-app:4.0
